@@ -1,0 +1,35 @@
+<section ng-controller="CamerasController" ng-init="findOne()">
+  <div class="page-header">
+    <h1>Edit Camera</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="cameraForm" class="form-horizontal" ng-submit="update(cameraForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="title">Camera Title</label>
+          <input name="title" type="text" ng-model="camera.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="cameraForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Camera title is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="cam_url">Camera URL</label>
+          <input name="cam_url" type="text" ng-model="camera.cam_url" id="cam_url" class="form-control" placeholder="Camera URL" required>
+          <div ng-messages="cameraForm.cam_url.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Camera cam_url is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea name="description" ng-model="camera.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-default">
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

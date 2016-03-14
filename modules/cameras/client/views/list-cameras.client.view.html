@@ -1,0 +1,37 @@
+<section ng-controller="CamerasController" ng-init="find()">
+  <div class="page-header">
+    <h1>Cameras</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="camera in cameras" ui-sref="cameras.view({cameraId: camera._id})" class="list-group-item">
+      <!--
+      <div>
+        Original img:
+        <img style="-webkit-user-select: none" src="http://192.168.1.135:8081/">
+      </div>
+      -->
+      <div>
+        <h4 class="list-group-item-heading" ng-bind="camera.title"></h4>
+        <img class="img-responsive" src="http://192.168.1.135:8081/">
+      </div>
+
+      <small class="list-group-item-text">
+        <p class="list-group-item-text" ng-bind="camera.description"></p>
+        <!--
+        Posted on
+        <span ng-bind="camera.created | date:'mediumDate'"></span>
+        by
+        <span ng-bind="camera.user.displayName"></span>
+        -->
+      </small>
+      
+      <!--
+      <h4 class="list-group-item-heading" ng-bind="camera.title"></h4>
+      <p class="list-group-item-text" ng-bind="camera.content"></p>
+      -->
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="cameras.$resolved && !cameras.length">
+    No cameras yet, why don't you <a ui-sref="cameras.create">create one</a>?
+  </div>
+</section>
